@@ -3,6 +3,7 @@
 import React from "react";
 import { useFetchData } from "@/hooks/useFetchData";
 import Character from "@/components/Character";
+import { Card } from "@/components/ui/Card";
 
 const Page = () => {
   const { data, loading, error } = useFetchData(
@@ -13,7 +14,7 @@ const Page = () => {
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   return (
-    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <Card className="">
       {data?.map((character) => (
         <Character
         key={character.id} 
@@ -22,7 +23,7 @@ const Page = () => {
         species={character.species} 
       />
       ))}
-    </div>
+    </Card>
   );
 };
 
