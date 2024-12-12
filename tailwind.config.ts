@@ -72,9 +72,35 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      perspective: {
+        '500': '500px', // Agrega una perspectiva personalizada
+      },
+      // Extensiones para rotaciones en el eje Y
+      rotate: {
+        'y-180': 'rotateY(180deg)', // Permite rotar 180 grados en el eje Y
+      }
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }: { addUtilities: (utilities: Record<string, Record<string, string>>) => void }) {
+      const newUtilities = {
+        '.transform-style-3d': {
+          'transform-style': 'preserve-3d',
+        },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.rotate-y-180': {
+          'transform': 'rotateY(180deg)',
+        },
+        '.perspective-500': {
+          'perspective': '500px',
+        },
+      };
+      addUtilities(newUtilities);
+    },
+  ],
 } satisfies Config
 
 export default config
