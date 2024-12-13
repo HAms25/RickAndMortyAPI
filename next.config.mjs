@@ -8,6 +8,10 @@ const nextConfig = {
                 hostname: 'rickandmortyapi.com',
                 pathname: '/api/character/avatar/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+            },
         ],
     },
 };
