@@ -1,22 +1,21 @@
 import { CardFront, CardBack } from "@/components";
+import { CharacterProps } from "./types";
 
-interface CharacterProps {
-  name: string;
-  image: string;
-  species: string;
-}
-
-const Character: React.FC<CharacterProps> = ({ name, image, species }) => {
+const Character: React.FC<CharacterProps> = ({
+  name,
+  image,
+  species,
+  status,
+  gender,
+  origin,
+  location
+}) => {
   console.log(image);
   return (
     <div className="group relative w-full h-64 max-w-xs mx-auto perspective-500">
       <div className="relative w-full h-full duration-500 transform-style-3d group-hover:rotate-y-180">
-        <div className="absolute w-full h-full backface-hidden">
-          <CardFront image={image} name={name} />
-        </div>
-        <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <CardBack name={name} species={species} />
-        </div>
+        <CardFront image={image} name={name} />
+        <CardBack name={name} species={species} status={status} gender={gender} origin={origin} location={location} />
       </div>
     </div>
   );

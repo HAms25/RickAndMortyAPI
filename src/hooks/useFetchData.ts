@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 export interface Character {
+  location: { name: string; };
+  origin: { name: string; url: string; };
   id: number;
   name: string;
   status: string;
